@@ -37,14 +37,16 @@ resource "openstack_networking_router_interface_v2" "internal" {
 }
 
 resource "openstack_networking_floatingip_v2" "ops_manager" {
-  region = "${var.region}"
-  pool   = "${var.external_network_name}"
+  region   = "${var.region}"
+  pool     = "${var.external_network_name}"
+  fixed_ip = "${cidrhost(var.internal_cidr, 2)}"
 }
 
 resource "openstack_networking_floatingip_v2" "optional_ops_manager" {
   count  = "${var.optional_ops_manager}"
   region = "${var.region}"
   pool   = "${var.external_network_name}"
+  fixed_ip = "${cidrhost(var.internal_cidr, 3)}"
 }
 
 resource "openstack_networking_floatingip_v2" "ha_proxy" {
