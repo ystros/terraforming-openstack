@@ -21,6 +21,7 @@ resource "openstack_compute_instance_v2" "ops_manager" {
 
   network {
     name = "${openstack_networking_network_v2.internal.name}"
+    fixed_ip_v4 = "${cidrhost(var.internal_cidr1, 254)}"
   }
 }
 
@@ -56,6 +57,7 @@ resource "openstack_compute_instance_v2" "optional_ops_manager" {
 
   network {
     name = "${openstack_networking_network_v2.internal.name}"
+    fixed_ip_v4 = "${cidrhost(var.internal_cidr2, 254)}"
   }
 }
 
