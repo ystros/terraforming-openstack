@@ -61,12 +61,7 @@ variable "external_network_name" {
   description = "The name of the external network."
 }
 
-variable "internal_cidr1" {
-  type        = "string"
-  description = "CIDR representing IP range for the subnet."
-}
-
-variable "internal_cidr2" {
+variable "internal_cidr" {
   type        = "string"
   description = "CIDR representing IP range for the subnet."
 }
